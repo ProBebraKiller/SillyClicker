@@ -10,7 +10,6 @@ public class BuyScript : MonoBehaviour
     [SerializeField] private Animator NotEnoughSillines; 
     AudioSource upgradeAudio;
     [SerializeField] private CatSlot[] Slot;
-
     [SerializeField] private ClickerCatSlot[] ASlot;
 
     [Serializable] private class ClickerCatSlot
@@ -49,8 +48,6 @@ public class BuyScript : MonoBehaviour
             ClickingScript.cookies -= price;
             catAmount++;
             price = price + (catAmount * priceIncrease);
-            price = price + (catAmount * 50);
-            CatWorkerTextPrice.text = price.ToString() + " Sillines";
         }
 
         public void passiveEarning()
@@ -68,8 +65,6 @@ public class BuyScript : MonoBehaviour
             Slot[id].TextPrice.text = Slot[id].price.ToString() + " Sillines";
             Slot[id].CatAnim.SetTrigger("ClickBack");
             Slot[id].CatAnim.SetTrigger("Click");
-            Slot[id].CatWorkerAnim.SetTrigger("ClickBack");
-            Slot[id].CatWorkerAnim.SetTrigger("Click");
             upgradeAudio.Play();
             ClickingScript.CookiesText.text = ClickingScript.cookies.ToString();
         }
@@ -96,11 +91,6 @@ public class BuyScript : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        upgradeAudio = GameObject.Find("UpgradeArea").GetComponent<AudioSource>();
-        CatWorkerTextPrice = GameObject.Find("CatWorker").transform.Find("CatPrice").GetComponent<TextMeshProUGUI>();
-    }
     void Start()
     {
         upgradeAudio = GameObject.Find("UpgradeArea").GetComponent<AudioSource>();
