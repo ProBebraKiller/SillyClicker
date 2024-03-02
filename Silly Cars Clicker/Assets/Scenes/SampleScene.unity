@@ -1606,7 +1606,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1212944073}
   - component: {fileID: 1212944074}
-  - component: {fileID: 1212944076}
   - component: {fileID: 1212944075}
   m_Layer: 5
   m_Name: UpgradeArea
@@ -1655,10 +1654,12 @@ MonoBehaviour:
     catAmount: 0
     multiplier: 1
     CatWorkerAnim: {fileID: 1275931290}
+    CatWorkerTextPrice: {fileID: 603029659}
   - price: 5
     catAmount: 0
     multiplier: 2
     CatWorkerAnim: {fileID: 1043806869}
+    CatWorkerTextPrice: {fileID: 1556314846}
 --- !u!82 &1212944075
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1755,18 +1756,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1212944076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1212944072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfdca08c7f86904489835fdb6b83a18a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1227850532
 GameObject:
   m_ObjectHideFlags: 0

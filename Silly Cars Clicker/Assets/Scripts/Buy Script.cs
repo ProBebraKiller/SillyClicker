@@ -8,7 +8,6 @@ using UnityEngine;
 public class BuyScript : MonoBehaviour
 {
     [SerializeField] private Animator NotEnoughSillines; 
-    TextMeshProUGUI CatWorkerTextPrice;
     AudioSource upgradeAudio;
     [SerializeField] private CatSlot[] Slot;
 
@@ -18,12 +17,14 @@ public class BuyScript : MonoBehaviour
         public int catAmount;
         public int multiplier = 1;
         public Animator CatWorkerAnim;
+        public TextMeshProUGUI CatWorkerTextPrice;
 
         public void Upgrade()
         {
             ClickingScript.cookies -= price;
             catAmount++;
-            price = 100 + (catAmount * 50);
+            price = price + (catAmount * 50);
+            CatWorkerTextPrice.text = price.ToString() + " Sillines";
         }
 
         public void passiveEarning()
@@ -38,7 +39,6 @@ public class BuyScript : MonoBehaviour
         if (Slot[id].price <= ClickingScript.cookies)
         {
             Slot[id].Upgrade();
-            CatWorkerTextPrice.text = Slot[id].price.ToString() + " Sillines";
             Slot[id].CatWorkerAnim.SetTrigger("ClickBack");
             Slot[id].CatWorkerAnim.SetTrigger("Click");
             upgradeAudio.Play();
@@ -53,7 +53,6 @@ public class BuyScript : MonoBehaviour
     void Start()
     {
         upgradeAudio = GameObject.Find("UpgradeArea").GetComponent<AudioSource>();
-        CatWorkerTextPrice = GameObject.Find("CatWorker").transform.Find("CatPrice").GetComponent<TextMeshProUGUI>();
         InvokeRepeating("PassiveEarning", 1f, 1f);
     }
 
