@@ -1857,6 +1857,14 @@ MonoBehaviour:
     priceIncrease: 100
     CatAnim: {fileID: 1709216233}
     TextPrice: {fileID: 1261596162}
+    multiplier: 1
+    CatWorkerAnim: {fileID: 1275931290}
+    CatWorkerTextPrice: {fileID: 603029659}
+  - price: 5
+    catAmount: 0
+    multiplier: 2
+    CatWorkerAnim: {fileID: 1043806869}
+    CatWorkerTextPrice: {fileID: 1556314846}
 --- !u!82 &1212944075
 AudioSource:
   m_ObjectHideFlags: 0
