@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 345603670}
   - component: {fileID: 345603674}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Frenzy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -554,8 +554,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b1e5344a8141a4f8c13c2920968946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GetSillyMusic: {fileID: 345603670}
   OneGetSillyTimer: 5
   GetSillyTimer: 5
+  TimerText: {fileID: 1325071481}
 --- !u!1 &357370448
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,7 +571,7 @@ GameObject:
   - component: {fileID: 357370450}
   - component: {fileID: 357370452}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1035,8 +1037,8 @@ MonoBehaviour:
       colorBlindnessType: 0
       colorBlindnessStrength: 1
   m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
-  m_ShowToolkit: 0
-  m_ShowCustomSorter: 0
+  m_ShowToolkit: 1
+  m_ShowCustomSorter: 1
   breakBeforeColorGrading: 0
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []

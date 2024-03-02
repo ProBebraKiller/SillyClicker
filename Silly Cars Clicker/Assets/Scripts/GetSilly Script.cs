@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class GetSillyScript : MonoBehaviour
 {
-    AudioSource GetSillyMusic;
+    [SerializeField] private AudioSource GetSillyMusic;
     Material SillyCatMaterial;
     Material ParticleMaterial;
     public float OneGetSillyTimer = 5.0f;
     public float GetSillyTimer = 5.0f;
     public static bool IsGetSilly = false;
-    TextMeshProUGUI TimerText;
+    [SerializeField] private TextMeshProUGUI TimerText;
 
     public void activateGetSilly()
     {
@@ -43,8 +43,6 @@ public class GetSillyScript : MonoBehaviour
     {
         SillyCatMaterial = GameObject.Find("FirstSillyCat").GetComponent<SpriteRenderer>().material;
         ParticleMaterial = GameObject.Find("CatParticle").GetComponent<ParticleSystem>().GetComponent<Renderer>().material;
-        GetSillyMusic = GameObject.Find("Button").GetComponent<AudioSource>();
-        TimerText = GameObject.Find("GetSillyTimer").GetComponent<TextMeshProUGUI>();
     }
 
     void Update()
