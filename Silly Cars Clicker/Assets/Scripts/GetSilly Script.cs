@@ -52,7 +52,7 @@ public class GetSillyScript : MonoBehaviour
             if(GetSillyTimer > 0)
             {
                 GetSillyTimer -= Time.deltaTime;
-                TimerText.text = GetSillyTimer.ToString();
+                TimerText.text = Mathf.RoundToInt(GetSillyTimer).ToString();
             }
             else
             {
