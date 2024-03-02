@@ -28,8 +28,6 @@ public class BuyScript : MonoBehaviour
         }
         else 
         {
-            NotEnoughSillines.Play("Dick");
-            
             NotEnoughSillines.Play("NotEnoughAnim");
         }
     }

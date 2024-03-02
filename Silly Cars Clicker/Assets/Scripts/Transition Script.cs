@@ -9,7 +9,7 @@ public class TransitionScript : MonoBehaviour
     [SerializeField] bool MovingToUpgrades = false;
     [SerializeField] bool MovingToMain = false;
     [SerializeField] float speed = 0.3f;
-    [SerializeField] GameObject Areas;
+    [SerializeField] GameObject Areas, notEnoughSillyText;
     public Vector3 velocity = Vector3.zero;
     public void MoveToUpgrade()
     {
@@ -19,15 +19,12 @@ public class TransitionScript : MonoBehaviour
     {
         if(MovingToUpgrades!=true) MovingToMain = true;
     } 
-    void Start()
-    {
-        Areas = GameObject.Find("Areas");
-    }
 
     void Update()
     {
         if (MovingToUpgrades)
         {
+            notEnoughSillyText.SetActive(true);
             transform.localPosition = Vector3.SmoothDamp(transform.localPosition, new Vector3(1141, 0, 0), ref velocity, speed);
             if (transform.localPosition.x > 1140.5f)
             {
@@ -36,6 +33,7 @@ public class TransitionScript : MonoBehaviour
         }
         if(MovingToMain)
         {
+            notEnoughSillyText.SetActive(false);
             transform.localPosition = Vector3.SmoothDamp(transform.localPosition, new Vector3(0, 0, 0), ref velocity, speed);
             if (transform.localPosition.x < 0.5f)
             {

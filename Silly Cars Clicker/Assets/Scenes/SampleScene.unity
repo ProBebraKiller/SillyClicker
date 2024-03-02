@@ -1748,7 +1748,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1243370966
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7604,7 +7604,8 @@ MonoBehaviour:
   MovingToUpgrades: 0
   MovingToMain: 0
   speed: 0.3
-  Areas: {fileID: 0}
+  Areas: {fileID: 1876752413}
+  notEnoughSillyText: {fileID: 1243370965}
   velocity: {x: 0, y: 0, z: 0}
 --- !u!1 &1883826076
 GameObject:
