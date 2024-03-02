@@ -11,19 +11,41 @@ public class BuyScript : MonoBehaviour
     TextMeshProUGUI CatWorkerTextPrice;
     AudioSource upgradeAudio;
     [SerializeField] private CatSlot[] Slot;
+    [SerializeField] private ClickerCatSlot[] ASlot;
+
+    [Serializable] private class ClickerCatSlot
+    {
+        public int price;
+        public int catAmount;
+        public int multiplier = 1;
+        public int priceIncrease;
+        public Animator CatAnim;
+        public TextMeshProUGUI TextPrice;
+        
+
+        public void Upgrade()
+        {
+            ClickingScript.cookies -= price;
+            catAmount++;
+            price = price + (catAmount * priceIncrease);
+            ClickingScript.CookiePerClick += multiplier;
+        }
+    }
 
     [Serializable] private class CatSlot
     {
         public int price;
         public int catAmount;
         public int multiplier = 1;
-        public Animator CatWorkerAnim;
+        public int priceIncrease;
+        public Animator CatAnim;
+        public TextMeshProUGUI TextPrice;
 
         public void Upgrade()
         {
             ClickingScript.cookies -= price;
             catAmount++;
-            price = 100 + (catAmount * 50);
+            price = price + (catAmount * priceIncrease);
         }
 
         public void passiveEarning()
@@ -38,9 +60,9 @@ public class BuyScript : MonoBehaviour
         if (Slot[id].price <= ClickingScript.cookies)
         {
             Slot[id].Upgrade();
-            CatWorkerTextPrice.text = Slot[id].price.ToString() + " Sillines";
-            Slot[id].CatWorkerAnim.SetTrigger("ClickBack");
-            Slot[id].CatWorkerAnim.SetTrigger("Click");
+            Slot[id].TextPrice.text = Slot[id].price.ToString() + " Sillines";
+            Slot[id].CatAnim.SetTrigger("ClickBack");
+            Slot[id].CatAnim.SetTrigger("Click");
             upgradeAudio.Play();
             ClickingScript.CookiesText.text = ClickingScript.cookies.ToString();
         }
@@ -49,7 +71,24 @@ public class BuyScript : MonoBehaviour
             NotEnoughSillines.Play("NotEnoughAnim");
         }
     }
-    
+
+    public void UpgradeCatClicker(int id)
+    {
+        if (ASlot[id].price <= ClickingScript.cookies)
+        {
+            ASlot[id].Upgrade();
+            ASlot[id].TextPrice.text = ASlot[id].price.ToString() + " Sillines";
+            ASlot[id].CatAnim.SetTrigger("ClickBack");
+            ASlot[id].CatAnim.SetTrigger("Click");
+            upgradeAudio.Play();
+            ClickingScript.CookiesText.text = ClickingScript.cookies.ToString();
+        }
+        else
+        {
+            NotEnoughSillines.Play("NotEnoughAnim");
+        }
+    }
+
     void Start()
     {
         upgradeAudio = GameObject.Find("UpgradeArea").GetComponent<AudioSource>();

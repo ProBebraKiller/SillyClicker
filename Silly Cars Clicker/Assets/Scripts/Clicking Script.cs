@@ -37,9 +37,4 @@ public class ClickingScript : MonoBehaviour
         anim = GameObject.Find("FirstSillyCat").GetComponent<Animator>();
         CookiesText = GameObject.Find("CookiesAmountText").GetComponent<TextMeshProUGUI>();
     }
-
-    void Update()
-    {
-        
-    }
 }

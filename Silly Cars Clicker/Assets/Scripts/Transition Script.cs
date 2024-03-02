@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TransitionScript : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class TransitionScript : MonoBehaviour
     [SerializeField] bool MovingToMain = false;
     [SerializeField] float speed = 0.3f;
     [SerializeField] GameObject Areas, notEnoughSillyText;
+    [SerializeField] TextMeshProUGUI notEnoughSillyAnimator;
     public Vector3 velocity = Vector3.zero;
     public void MoveToUpgrade()
     {
@@ -33,6 +36,7 @@ public class TransitionScript : MonoBehaviour
         }
         if(MovingToMain)
         {
+            notEnoughSillyAnimator.color = new Color(255, 0 , 0, 0);
             notEnoughSillyText.SetActive(false);
             transform.localPosition = Vector3.SmoothDamp(transform.localPosition, new Vector3(0, 0, 0), ref velocity, speed);
             if (transform.localPosition.x < 0.5f)
