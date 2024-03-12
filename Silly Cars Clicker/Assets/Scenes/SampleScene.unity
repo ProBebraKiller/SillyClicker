@@ -575,19 +575,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 345603672}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 345603674}
-        m_TargetAssemblyTypeName: GetSillyScript, Assembly-CSharp
-        m_MethodName: activateGetSilly
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &345603672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1935,16 +1923,12 @@ MonoBehaviour:
     priceIncrease: 100
     CatAnim: {fileID: 1524264295}
     TextPrice: {fileID: 884332405}
-    CatWorkerAnim: {fileID: 496698532}
-    CatWorkerTextPrice: {fileID: 1655946019}
   - price: 5
     catAmount: 0
     multiplier: 2
     priceIncrease: 0
     CatAnim: {fileID: 0}
-    TextPrice: {fileID: 0}
-    CatWorkerAnim: {fileID: 1302460585}
-    CatWorkerTextPrice: {fileID: 1453466778}
+    TextPrice: {fileID: 1453466778}
 --- !u!82 &873400281
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2771,16 +2755,12 @@ MonoBehaviour:
     priceIncrease: 100
     CatAnim: {fileID: 1709216233}
     TextPrice: {fileID: 1261596162}
-    CatWorkerAnim: {fileID: 1275931290}
-    CatWorkerTextPrice: {fileID: 603029659}
   - price: 5
     catAmount: 0
     multiplier: 2
     priceIncrease: 0
     CatAnim: {fileID: 0}
     TextPrice: {fileID: 0}
-    CatWorkerAnim: {fileID: 1043806869}
-    CatWorkerTextPrice: {fileID: 1556314846}
 --- !u!82 &1212944075
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4505,9 +4485,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 893f1d1bb620f474f80374c6e6a577b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  CatMeow: {fileID: 0}
-  CatParticle: {fileID: 0}
+  anim: {fileID: 2113823636}
+  CatMeow: {fileID: 2017724518}
+  CatParticle: {fileID: 1723370037}
+  GetSillyMusic: {fileID: 345603670}
+  SillyCatMaterial: {fileID: 2100000, guid: 2903bd8c381d3264c9a09e7104511bb6, type: 2}
+  ParticleMaterial: {fileID: 2100000, guid: 2903bd8c381d3264c9a09e7104511bb6, type: 2}
+  OneGetSillyTimer: 5
+  GetSillyTimer: 5
+  TimerText: {fileID: 1325071481}
+  button: {fileID: 345603671}
 --- !u!1 &1654821130
 GameObject:
   m_ObjectHideFlags: 0
