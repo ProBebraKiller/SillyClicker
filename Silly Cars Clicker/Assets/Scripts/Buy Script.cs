@@ -20,10 +20,6 @@ public class BuyScript : MonoBehaviour
         public int priceIncrease;
         public Animator CatAnim;
         public TextMeshProUGUI TextPrice;
-        
-
-        public Animator CatWorkerAnim;
-        public TextMeshProUGUI CatWorkerTextPrice;
 
         public void Upgrade()
         {

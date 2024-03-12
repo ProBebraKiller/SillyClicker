@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ClickingScript : MonoBehaviour
 {
@@ -12,9 +13,27 @@ public class ClickingScript : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] AudioSource CatMeow;
     [SerializeField] ParticleSystem CatParticle;
+    [SerializeField] private AudioSource GetSillyMusic;
+    [SerializeField] private Material SillyCatMaterial;
+    [SerializeField] private Material ParticleMaterial;
+    public float OneGetSillyTimer = 5.0f;
+    public float GetSillyTimer = 5.0f;
+    private int multiplier;
+    public static bool IsGetSilly = false;
+    [SerializeField] private TextMeshProUGUI TimerText;
+    public Button button;
+
+    private void Start()
+    {
+        CookiesText = gameObject.GetComponent<TextMeshProUGUI>();
+        button.onClick.AddListener(() => activateGetSilly(9, 10f));
+        SillyCatMaterial = GameObject.Find("FirstSillyCat").GetComponent<SpriteRenderer>().material;
+        ParticleMaterial = GameObject.Find("CatParticle").GetComponent<ParticleSystem>().GetComponent<Renderer>().material;
+    }
+
     public void OnClicking()
     {
-        if (!GetSillyScript.IsGetSilly)
+        if (!IsGetSilly)
         {
             cookies += CookiePerClick;
             anim.SetTrigger("ClickBack");
@@ -22,7 +41,7 @@ public class ClickingScript : MonoBehaviour
         }
         else 
         { 
-            cookies += CookiePerClick * 9;
+            cookies += CookiePerClick * multiplier;
             anim.SetTrigger("GetSillyBack");
             anim.SetTrigger("GetSillyClick"+random.Next(1,3));
         }
@@ -30,11 +49,49 @@ public class ClickingScript : MonoBehaviour
         CatMeow.Play();
         CatParticle.Play();
     }
-    void Start()
+
+    public void activateGetSilly(int mult, float time)
     {
-        CatParticle = GameObject.Find("CatParticle").GetComponent<ParticleSystem>();
-        CatMeow = GameObject.Find("SillyCarButton").GetComponent<AudioSource>();
-        anim = GameObject.Find("FirstSillyCat").GetComponent<Animator>();
-        CookiesText = GameObject.Find("CookiesAmountText").GetComponent<TextMeshProUGUI>();
+        if (!IsGetSilly)
+        {
+            if(mult > multiplier) multiplier = mult;
+            GetSillyTimer = time;
+            OneGetSillyTimer = time;
+            IsGetSilly = true;
+            print("GetSilly Enabled");
+            GetSillyMusic.Play();
+            SillyCatMaterial.SetColor("_EmissionColor", Color.yellow);
+            ParticleMaterial.SetColor("_EmissionColor", Color.yellow);
+        }
+        else
+        {
+            GetSillyTimer += time;
+        }
+    }
+
+    public void deactivateGetSilly()
+    {
+        IsGetSilly = false;
+        print("GetSilly Disabled");
+        GetSillyMusic.Stop();
+        SillyCatMaterial.SetColor("_EmissionColor", Color.black);
+        ParticleMaterial.SetColor("_EmissionColor", Color.black);
+        GetSillyTimer = OneGetSillyTimer;
+    }
+
+    private void Update()
+    {
+        if (IsGetSilly)
+        {
+            if (GetSillyTimer > 0)
+            {
+                GetSillyTimer -= Time.deltaTime;
+                TimerText.text = Mathf.RoundToInt(GetSillyTimer).ToString();
+            }
+            else
+            {
+                deactivateGetSilly();
+            }
+        }
     }
 }
